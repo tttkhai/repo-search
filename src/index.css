@@ -1,5 +1,5 @@
 body {
-  margin: auto;
+  /* margin: auto; */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -12,15 +12,10 @@ code {
     monospace;
 }
 
-.input {
-  width: 30%;
-  height: 40px;
-  border: none;
-  border-radius: 6px;
-  font-size: 18px;
-  padding-left: 10px;
-  background-color: rgba(255, 255, 255, 0.3);
-  color: salmon;
+.dropdown-selection {
+  display: flex;
+  font-weight: 500;
+  font-size: 0.9em;
 }
 
 .btn {
@@ -29,41 +24,20 @@ code {
   min-width: 40px;
   height: 40px;
   color: white !important;
-}
-
-.input::placeholder {
-  color: #282d35;
-}
-
-/* .button {
-  height: 100%;
-  width: 10%;
-  background-color: salmon;
-  border-radius: 5px;
-  border: none;
-  font-size: 18px;
-  color: #282d35;
-  box-sizing: content-box;
-  margin-left: 10px;
   cursor: pointer;
-} */
+}
 
 form {
   display: flex;
-  /* justify-content: space-between; */
 }
 
-.button:focus {
+.btn:focus {
   outline: none;
 }
 
-.row > h2 {
-  /* color: salmon; */
-  pointer-events: auto;
-}
-
-.row:hover {
-  /* background-color: salmon; */
+.input-form:hover {
+  background-color: salmon;
+  color: white
 }
 
 .page {
@@ -71,9 +45,5 @@ form {
   width: 100%;
   color: salmon;
   background: #282D35;
-}
-
-.aa {
-  background: #282D35;
-  width: 100%;
+  overflow-y: scroll;
 }

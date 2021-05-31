@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
 import DetailsPage from "./DetailsPage";
 
 function Results({ repos, selectedLanguage, isSubmitted, error }) {
@@ -10,12 +9,15 @@ function Results({ repos, selectedLanguage, isSubmitted, error }) {
   const detailRepo = (value) => {
     setRepoDetail(value);
     setIsDetailClick(true);
-    console.log(repoDetail);
   };
 
+  const toggleModal = () => {
+    setIsDetailClick(false);
+  };
+
+  // results are changed if repos and selectedLanguage
   /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
-    console.log("filter function being invoked");
     if (selectedLanguage && selectedLanguage !== "default") {
       selectedLanguage = selectedLanguage === "null" ? null : selectedLanguage;
       const resultByLanguage = repos.filter(
@@ -25,17 +27,17 @@ function Results({ repos, selectedLanguage, isSubmitted, error }) {
     } else {
       setResults(repos);
     }
-    setIsDetailClick(false);
   }, [repos, selectedLanguage]);
 
   if (repos.length === 0 && isSubmitted && !error) {
     return <div>No repo found</div>;
   } else {
     return (
-      <div style={{marginTop: '10px'}}>
+      <div style={{ marginTop: "10px" }}>
         {results.map((repo) => {
           return (
             <div
+              className="input-form"
               onClick={() => {
                 detailRepo(repo);
               }}
@@ -45,7 +47,12 @@ function Results({ repos, selectedLanguage, isSubmitted, error }) {
             </div>
           );
         })}
-        {isDetailClick && <DetailsPage repoDetail={repoDetail} />}
+
+        <DetailsPage
+          isDetailClick={isDetailClick}
+          toggleModal={toggleModal}
+          repoDetail={repoDetail}
+        />
       </div>
     );
   }

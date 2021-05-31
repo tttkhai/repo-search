@@ -30,7 +30,7 @@ function SearchPage() {
 
     const input = userInput.trim();
 
-    // require user input after trim it
+    // user inputs are required
     if (!input || /^\s*$/.test(input)) {
       setIsSubmitted(true);
       setError("Please enter at least something");
@@ -47,8 +47,8 @@ function SearchPage() {
     }
   };
 
+  // return results from the searched text
   const fetchRepos = async (input, sortValue) => {
-    console.log("fetchRepos being called");
     const result = await getRepos(input, sortValue);
     setIsSubmitted(true);
     setIsLoading(false);
@@ -67,7 +67,6 @@ function SearchPage() {
   };
 
   const reset = () => {
-    console.log("reset being invoked");
     setIsLoading(false);
     setRepos([]);
     setLanguages([]);
@@ -76,7 +75,7 @@ function SearchPage() {
     setError("");
   };
 
-  // After submission, the previous results will be wiped out if the users add/remove the form texts
+  // After submission, if the users add/remove more texts then the previous results will be wiped out
   useEffect(() => {
     if (isSubmitted) {
       reset();
@@ -85,7 +84,10 @@ function SearchPage() {
   }, [userInput]);
 
   return (
-    <div className="aa" style={{ marginRight: "auto", marginLeft: "auto" }}>
+    <div
+      className="container"
+      style={{ marginRight: "auto", marginLeft: "auto" }}
+    >
       <div className="row">
         <div className="col-md-8 mt-3">
           <form onSubmit={(e) => handleSubmit(e)}>
@@ -100,20 +102,23 @@ function SearchPage() {
             <button className="btn" style={{ width: "100px" }} type="submit">
               {isLoading ? "Searching" : "Search"}
             </button>
+            {/* validation - it will pop up an error if users enter empty text (after trim) */}
             {error && <p className="error">{error}</p>}
           </form>
         </div>
 
-        <div className="col-md-4" style={{ display: "flex" }}>
+        {/* Dropdown Selection to sort the results/filter by language */}
+        <div className="col-md-4 dropdown-selection">
           <div className="col-lg-4" style={{ marginRight: "10px" }}>
             <SortRepo sortedRepo={sortedRepo} />
           </div>
-
           <div className="col-lg-6">
             <FilterLanguage filterInput={filterInput} languages={languages} />
           </div>
         </div>
-        <div style={{fontWeight: '700'}}>
+
+        {/* Results from the query will be displayed here */}
+        <div div className="col-md-8" style={{ fontWeight: "700" }}>
           <Results
             isSubmitted={isSubmitted}
             repos={repos}
