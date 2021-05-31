@@ -1,8 +1,7 @@
 export default function FilterLanguage({ languages, filterInput }) {
   return (
-    <div style={{ float: "right" }}>
-      Filter by language
-      <form>
+    <>
+      <label> Filter by language</label>
         <select onChange={(e) => filterInput(e.target.value)}>
           <option value={"default"}>Select a language</option>
           {languages.map((data, index) => {
@@ -14,7 +13,6 @@ export default function FilterLanguage({ languages, filterInput }) {
             );
           })}
         </select>
-      </form>
-    </div>
+    </>
   );
 }

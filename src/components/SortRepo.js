@@ -1,18 +1,16 @@
 export default function SortRepo({ sortedRepo }) {
-  const handleChange = (e) => {
-    sortedRepo(e.target.value);
-  };
   return (
-    <div style={{ float: "right" }}>
-      Sort by
-      <form>
-        <select defaultValue={"keys"} onChange={handleChange}>
+    <>
+      <label>Sort by</label>
+        <select
+          defaultValue={"keys"}
+          onChange={(e) => sortedRepo(e.target.value)}
+        >
           sortedRepo
-          <option value="keys">best match (default)</option>
+          <option value="keys">best match</option>
           <option value="stars">stars</option>
           <option value="forks">forks</option>
         </select>
-      </form>
-    </div>
+    </>
   );
 }
