@@ -25,6 +25,7 @@ code {
   height: 40px;
   color: white !important;
   cursor: pointer;
+  border: none !important;
 }
 
 form {
@@ -33,6 +34,11 @@ form {
 
 .btn:focus {
   outline: none;
+}
+
+.btn:hover {
+  background: rgb(230, 175, 169) !important;
+  color: white
 }
 
 .input-form:hover {

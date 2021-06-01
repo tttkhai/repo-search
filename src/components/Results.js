@@ -20,9 +20,7 @@ function Results({ repos, selectedLanguage, isSubmitted, error }) {
   useEffect(() => {
     if (selectedLanguage && selectedLanguage !== "default") {
       selectedLanguage = selectedLanguage === "null" ? null : selectedLanguage;
-      const resultByLanguage = repos.filter(
-        ({ language }) => selectedLanguage === language
-      );
+      const resultByLanguage = filterByLanguage(repos, selectedLanguage)
       setResults(resultByLanguage);
     } else {
       setResults(repos);
@@ -57,5 +55,9 @@ function Results({ repos, selectedLanguage, isSubmitted, error }) {
     );
   }
 }
+
+export const filterByLanguage = (repos, selectedLanguage) => {
+  return repos.filter(({ language }) => selectedLanguage === language);
+};
 
 export default Results;

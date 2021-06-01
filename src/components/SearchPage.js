@@ -7,6 +7,7 @@ import FilterLanguage from "./FilterLanguage";
 export const getRepos = (input, sortValue) => {
   try {
     const githubURL = `https://api.github.com/search/repositories?q=${input}&sort=${sortValue}&per_page=50`;
+    console.log(githubURL)
     return axios.get(githubURL);
   } catch (err) {
     alert("Errors: " + err);

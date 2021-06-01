@@ -1,4 +1,5 @@
 import {getRepos} from '../SearchPage';
+import {filterByLanguage} from '../Results'
 
 test('should return a result with length of at least 1 when received an existing repo name as input', async () => {
   const userInput='foody-ui'
@@ -36,8 +37,6 @@ test('should contain a repo named "foody-ui-react" when filtered the repos by la
   const sortValue='keys'
   const result= await getRepos(userInput, sortValue)
   const repos=result.data.items
-  const repoFilterByJavascript = repos.filter(
-    ({ language }) => 'JavaScript' === language
-  );
+  const repoFilterByJavascript = filterByLanguage(repos, 'JavaScript')
   expect(repoFilterByJavascript.filter(({name})=> name==='foody-ui-react').length).toBeGreaterThan(0);
 });

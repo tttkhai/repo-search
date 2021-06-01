@@ -6,15 +6,16 @@ function DetailsPage({ repoDetail, isDetailClick, toggleModal }) {
     <>
       {/* Modal -- a modal will popup with repo details */}
       <Modal show={isDetailClick} animation={false}>
-        <Modal.Header>Repo: {repoDetail.name} </Modal.Header>
+        <Modal.Header>{repoDetail.name} </Modal.Header>
         <Modal.Body>
-          <div>Description: {repoDetail.description} </div>
-          <div>Number of stars: {repoDetail.stargazers_count} </div>
-          <div>Language: {repoDetail.language} </div>
           <div>Owner: {repoDetail.owner ? repoDetail.owner.login : ""} </div>
+          <div>Description: {repoDetail.description} </div>
+          <div>Language: {repoDetail.language} </div>
+          <div>Number of stars: {repoDetail.stargazers_count} </div>
+          <div>Number of forks: {repoDetail.forks_count} </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={() => toggleModal()}>Close</Button>
+          <Button className="btn" onClick={() => toggleModal()}>Close</Button>
         </Modal.Footer>
       </Modal>
     </>
