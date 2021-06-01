@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import DetailsPage from "./DetailsPage";
 
 function Results({ repos, selectedLanguage, isSubmitted, error }) {
@@ -17,15 +17,19 @@ function Results({ repos, selectedLanguage, isSubmitted, error }) {
 
   // The effect will be re-run everytime the repos and selectedLanguage values change
   /* eslint-disable react-hooks/exhaustive-deps */
-  useEffect(() => {
+  const filter = useCallback(() => {
     if (selectedLanguage && selectedLanguage !== "default") {
       selectedLanguage = selectedLanguage === "null" ? null : selectedLanguage;
-      const resultByLanguage = filterByLanguage(repos, selectedLanguage)
+      const resultByLanguage = filterByLanguage(repos, selectedLanguage);
       setResults(resultByLanguage);
     } else {
       setResults(repos);
     }
   }, [repos, selectedLanguage]);
+
+  useEffect(() => {
+    filter();
+  }, [filter]);
 
   if (repos.length === 0 && isSubmitted && !error) {
     return <div>No repo found</div>;
