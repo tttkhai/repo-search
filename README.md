@@ -1,6 +1,6 @@
-# Clone the repo to your local and install the dependencies:
+### Clone the repo to your local and install the dependencies:
 
-### git clone https://github.com/tttkhai/repo-search.git
+git clone https://github.com/tttkhai/repo-search.git
 
 ### `npm install`
 
