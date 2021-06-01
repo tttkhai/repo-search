@@ -4,7 +4,7 @@ import { Button, Modal } from "react-bootstrap";
 function DetailsPage({ repoDetail, isDetailClick, toggleModal }) {
   return (
     <>
-      {/* Modal -- a modal will popup with details */}
+      {/* Modal -- a modal will popup with repo details */}
       <Modal show={isDetailClick} animation={false}>
         <Modal.Header>Repo: {repoDetail.name} </Modal.Header>
         <Modal.Body>

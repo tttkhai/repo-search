@@ -15,7 +15,7 @@ function Results({ repos, selectedLanguage, isSubmitted, error }) {
     setIsDetailClick(false);
   };
 
-  // results are changed if repos and selectedLanguage
+  // The effect will be re-run everytime the repos and selectedLanguage values change
   /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     if (selectedLanguage && selectedLanguage !== "default") {

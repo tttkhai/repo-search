@@ -16,7 +16,7 @@ export const getRepos = (input, sortValue) => {
 function SearchPage() {
   const [userInput, setUserInput] = useState("");
   const [repos, setRepos] = useState([]);
-  const [sort, setSort] = useState("");
+  const [sort, setSort] = useState("keys");
   const [languages, setLanguages] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -41,8 +41,8 @@ function SearchPage() {
   };
 
   const sortedRepo = (value) => {
-    setSort(value);
     if (repos.length > 0) {
+      setSort(value);
       fetchRepos(userInput, value);
     }
   };
@@ -75,7 +75,7 @@ function SearchPage() {
     setError("");
   };
 
-  // After submission, if the users add/remove more texts then the previous results will be wiped out
+  // After submission, if the users try to add/remove texts then the previous results will be reset
   useEffect(() => {
     if (isSubmitted) {
       reset();
@@ -84,10 +84,7 @@ function SearchPage() {
   }, [userInput]);
 
   return (
-    <div
-      className="container"
-      style={{ marginRight: "auto", marginLeft: "auto" }}
-    >
+    <div className="container">
       <div className="row">
         <div className="col-md-8 mt-3">
           <form onSubmit={(e) => handleSubmit(e)}>
@@ -118,7 +115,7 @@ function SearchPage() {
         </div>
 
         {/* Results from the query will be displayed here */}
-        <div div className="col-md-8" style={{ fontWeight: "700" }}>
+        <div className="col-md-8" style={{ fontWeight: "700" }}>
           <Results
             isSubmitted={isSubmitted}
             repos={repos}
