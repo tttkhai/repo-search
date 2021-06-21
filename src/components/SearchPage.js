@@ -7,7 +7,7 @@ import FilterLanguage from "./FilterLanguage";
 export const getRepos = (input, sortValue) => {
   try {
     const githubURL = `https://api.github.com/search/repositories?q=${input}&sort=${sortValue}&per_page=50`;
-    console.log(githubURL)
+    console.log(githubURL);
     return axios.get(githubURL);
   } catch (err) {
     alert("Errors: " + err);
@@ -37,6 +37,7 @@ function SearchPage() {
       setError("Please enter at least something");
       return;
     }
+
     setIsLoading(true);
     fetchRepos(input, sort);
   };
@@ -101,8 +102,8 @@ function SearchPage() {
               {isLoading ? "Searching" : "Search"}
             </button>
             {/* validation - it will pop up an error if users enter empty text (after trim) */}
-            {error && <p className="error">{error}</p>}
           </form>
+          {error && <div className="error">{error}</div>}
         </div>
 
         {/* Dropdown Selection to sort the results/filter by language */}

@@ -53,3 +53,8 @@ form {
   background: #282D35;
   overflow-y: scroll;
 }
+
+.error {
+  margin-bottom: 15px;
+  color: red;
+}
